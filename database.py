@@ -16,6 +16,17 @@ def getContactByType(uidIn, typeIn):
                 return contactDetail.strip('\n')
     return "%%NOTFOUND%%"
 
+def getContactId(uidIn, typeIn):
+    f = open(globalVars.contactDatabase, 'r')
+    for line in f:
+        splitted = line.split(',')
+        index = int(splitted[0])
+        userId = int(splitted[1])
+        contactType = splitted[2]
+        if (uidIn == userId):
+            if (typeIn == contactType):
+                return index
+
 def getContactById(uidIn, cidIn):
     f = open(globalVars.contactDatabase, 'r')
     for line in f:
