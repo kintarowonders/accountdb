@@ -275,3 +275,21 @@ def deleteContact(cid):
             f.write(line)
 
     w.close()
+
+def searchContact(ctype, detail):
+    f = open(globalVars.contactDatabase,'r')
+    lines = f.readlines()
+
+    success = False
+    for line in lines:
+        splitted = line.split(',')
+        uid = int(splitted[1])
+
+        if (ctype == splitted[2]) and (detail = splitted[3]):
+            success = True
+            break
+
+    if (success):
+        return uid
+    else
+        return -1
